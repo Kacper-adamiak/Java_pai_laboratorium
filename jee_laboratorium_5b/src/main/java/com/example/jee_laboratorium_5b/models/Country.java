@@ -1,4 +1,4 @@
-package com.example.jee_laboratorium_5b.model;
+package com.example.jee_laboratorium_5b.models;
 
 import jakarta.persistence.*;
 
@@ -173,5 +173,11 @@ public class Country {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    @Override
+    public String toString() {
+        return code + ", " + name + ", " +
+                continent + ", " + population;
     }
 }

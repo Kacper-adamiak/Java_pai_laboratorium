@@ -14,7 +14,6 @@
     <table border>
         <tr> <th>Id</th> <th>Nazwisko</th> <th>Pensja</th> <th>Firma</th>
             <th>Edytuj</th> <th>Usuń</th>
-            54 Programowanie aplikacji internetowych JEE w Spring
         </tr>
         <c:forEach var="pr" items="${list}">
             <tr>

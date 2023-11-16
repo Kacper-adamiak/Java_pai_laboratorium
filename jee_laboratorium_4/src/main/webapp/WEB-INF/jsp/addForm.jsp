@@ -29,7 +29,6 @@
                 <td> <input type="submit" value="Zapisz" /> </td>
             </tr>
         </table>
-        Programowanie aplikacji internetowych JEE w Spring 55
     </form:form>
 </div>
 </body>
