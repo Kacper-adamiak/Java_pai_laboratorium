@@ -1,4 +1,4 @@
-package com.example.jee_laboratorium_6.configuration;
+package com.example.jee_laboratorium_6.security.configuration;
 
 import com.example.jee_laboratorium_6.dao.UserDao;
 import com.example.jee_laboratorium_6.entity.User;
@@ -16,7 +16,7 @@ public class DbInit {
 
     @PostConstruct
     public void init() {
-        dao.save(new User("Jan", "Kowalski","admin",
+        dao.save(new User("Piotr", "Piotrowski","admin",
                 passwordEncoder.encode("admin")));
         dao.save(new User("Ania", "Annowska","ania",
                 passwordEncoder.encode("ania")));

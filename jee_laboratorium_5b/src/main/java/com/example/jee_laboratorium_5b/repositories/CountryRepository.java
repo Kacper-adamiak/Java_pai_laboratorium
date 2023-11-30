@@ -10,4 +10,6 @@ public interface CountryRepository extends JpaRepository<Country, String> {
     List<Country> findByPopulationBetween(Integer populationStart, Integer populationEnd);
     List<Country> findByContinentAndPopulationBetween(String continent, Integer populationStart, Integer populationEnd);
 
+
+
 }

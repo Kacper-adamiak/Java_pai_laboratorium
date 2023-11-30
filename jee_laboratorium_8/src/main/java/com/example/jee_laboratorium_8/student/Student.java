@@ -1,17 +1,28 @@
 package com.example.jee_laboratorium_8.student;
 
+import com.example.jee_laboratorium_8.address.Address;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String surname;
+    private Integer age;
+    @JoinColumn(name = "address_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+
+
 
 }

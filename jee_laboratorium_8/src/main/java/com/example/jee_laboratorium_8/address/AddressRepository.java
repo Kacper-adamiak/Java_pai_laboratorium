@@ -1,4 +1,8 @@
 package com.example.jee_laboratorium_8.address;
 
-public interface AddressRepository extends org.springframework.data.jpa.repository.JpaRepository<com.example.jee_laboratorium_8.address.Address, java.lang.Long> {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AddressRepository extends JpaRepository<Address, Long> {
 }

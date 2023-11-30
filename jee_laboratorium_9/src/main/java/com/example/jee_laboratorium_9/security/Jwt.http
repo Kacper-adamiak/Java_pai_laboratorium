@@ -1,0 +1,7 @@
+POST http://localhost:8080/authenticate
+content-type: application/json
+
+{
+  "username": "pai",
+  "password": "password"
+}

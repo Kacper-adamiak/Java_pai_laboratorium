@@ -1,4 +1,4 @@
-package com.example.jee_laboratorium_9.security;
+package com.example.jee_laboratorium_10.security;
 
 import java.io.Serial;
 import java.io.Serializable;

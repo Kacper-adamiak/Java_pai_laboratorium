@@ -1,4 +1,4 @@
-package com.example.jee_laboratorium_9.security;
+package com.example.jee_laboratorium_10.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

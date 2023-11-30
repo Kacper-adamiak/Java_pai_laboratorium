@@ -1,10 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
 </head>
 <body>
-$END$
+<h1>Students</h1>
+<h2>All</h2>
+<div>
+    <table id="output"></table>
+</div>
+<h2>Add</h2>
+<form id="addStudentForm">
+    <label for="name">Name:</label><br/>
+    <input type="text" id="name" name="name" required><br/>
+
+    <label for="surname">Surname:</label><br/>
+    <input type="text" id="surname" name="surname" required><br/>
+
+    <label for="average">Average:</label><br/>
+    <input type="number" id="average" name="average" step="0.1" required><br/>
+
+    <button type="button" onclick="addStudent()">Add Student</button>
+</form>
+
+<h2>Delete</h2>
+
+<label for="deleteId">Student ID:</label>
+<input type="number" id="deleteId" name="deleteId" required>
+<button type="button" onclick="deleteStudent()">Delete Student</button>
+
+<h2>Update</h2>
+
+<form id="updateStudentForm">
+    <label for="updateId">Student ID to Update:</label><br/>
+    <input type="number" id="updateId" name="updateId" required><br/>
+
+    <label for="updateName">Updated Name:</label><br/>
+    <input type="text" id="updateName" name="updateName" required><br/>
+
+    <label for="updateSurname">Updated Surname:</label><br/>
+    <input type="text" id="updateSurname" name="updateSurname" required><br/>
+
+    <label for="updateAverage">Updated Average:</label><br/>
+    <input type="number" id="updateAverage" name="updateAverage" step="0.1" required><br/>
+
+    <button type="button" onclick="updateStudent()">Update Student</button>
+</form>
+
+<script>
+    const apiUrl = 'http://localhost:8080/students';
+
+    getAllStudents()
+
+    function getAllStudents() {
+        fetch(apiUrl + "/all")
+            .then(response => response.json())
+            .then(data => {
+                displayStudents(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function displayStudents(students) {
+        const outputTable = document.getElementById('output');
+        outputTable.innerHTML = `
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                    </tr>
+            `;
+
+        students.forEach(student => {
+            const studentInfo = document.createElement('tr');
+            studentInfo.innerHTML = (`
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.surname}</td>
+                    <td>${student.average}</td>
+                `);
+            outputTable.appendChild(studentInfo)
+        });
+    }
+
+    function addStudent() {
+        const name = document.getElementById('name').value;
+        const surname = document.getElementById('surname').value;
+        const average = document.getElementById('average').value;
+
+        const newStudent = {
+            name: name,
+            surname: surname,
+            average: parseFloat(average)
+        };
+
+        fetch(apiUrl + "/add", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newStudent)
+        })
+            .then(() => {
+                console.log('Student created successfully');
+                getAllStudents();
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function deleteStudent() {
+        const deleteId = document.getElementById('deleteId').value;
+
+        fetch(`${apiUrl}/${deleteId}`, {
+            method: 'DELETE'
+        })
+            .then(() => {
+                console.log('Student deleted successfully');
+                getAllStudents();
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function updateStudent() {
+        const updateId = document.getElementById('updateId').value;
+        const updateName = document.getElementById('updateName').value;
+        const updateSurname = document.getElementById('updateSurname').value;
+        const updateAverage = document.getElementById('updateAverage').value;
+
+        const updatedStudent = {
+            name: updateName,
+            surname: updateSurname,
+            average: parseFloat(updateAverage)
+        };
+
+        fetch(`${apiUrl}/${updateId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedStudent)
+        })
+            .then(() => {
+                console.log('Student updated successfully');
+                getAllStudents();
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+</script>
 </body>
 </html>

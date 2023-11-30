@@ -1,2 +1,22 @@
+POST http://localhost:8080/register
+content-type: application/json
+
+{
+  "username": "kacper",
+  "password": "kacper"
+}
+
+###
+
+POST http://localhost:8080/authenticate
+content-type: application/json
+
+{
+  "username": "kacper",
+  "password": "kacper"
+}
+
+###
+
 GET http://localhost:8080/welcome
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwYWkiLCJleHAiOjE3MDEzNjU4MjIsImlhdCI6MTcwMTM0NzgyMn0.sQFIHz1Fw3QqDjV3Y90QywLFz3zt3z-LMiXAc-PMu0myfPKkNa6XQJZt-ZlAuyuVIDfc1jcaysAJ2hSmHvkVhg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYWNwZXIiLCJleHAiOjE3MDEzNjk0NTcsImlhdCI6MTcwMTM1MTQ1N30.e8O_Gn1c6MmCv7keHpkIzjfOPwVDOCOcFdSGxM9TuFU0A16OKMhQgzEzUccSkVc7ZoQ37dLbxCzz1a9MAj4Yrw

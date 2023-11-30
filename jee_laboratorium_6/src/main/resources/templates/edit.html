@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout :: head"> </head>
 <body>
-$END$
+<div th:insert="layout :: navigationPanel"></div>
+<h1>Edycja konta:</h1>
+<form th:action="@{/edit}" method="POST" th:object="${userData}">
+  <input type="hidden" th:field="*{userid}"/>
+  <input type="text" th:field="*{name}" placeholder="Imię"/>
+  <p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" />
+  <input type="text" th:field="*{surname}" placeholder="Nazwisko"/>
+  <p th:if="${#fields.hasErrors('surname')}" th:errorclass="error" th:errors="*{surname}" />
+  <input type="text" th:field="*{login}" placeholder="Login"/>
+  <p th:if="${#fields.hasErrors('login')}" th:errorclass="error" th:errors="*{login}" />
+  <input type="password" th:field="*{password}" placeholder="Hasło"/>
+  <p th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}" />
+  <button type="submit">Edytuj</button>
+</form>
+<div th:insert="layout :: footer"></div>
 </body>
 </html>

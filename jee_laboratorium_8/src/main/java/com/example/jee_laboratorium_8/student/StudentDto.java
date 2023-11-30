@@ -1,4 +1,4 @@
-package com.example.jee_laboratorium_8.studentWithDto;
+package com.example.jee_laboratorium_8.student;
 
 import lombok.*;
 
@@ -8,5 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class StudentDto {
-    
+    private String name;
+    private String surname;
+    private Integer age;
+    private String street;
+    private String city;
+    private String zip;
+    private String state;
 }
