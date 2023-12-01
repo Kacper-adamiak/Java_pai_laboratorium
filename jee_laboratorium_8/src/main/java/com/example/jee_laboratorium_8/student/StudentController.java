@@ -17,4 +17,9 @@ public class StudentController {
     public List<StudentDto> getAllStudents() {
         return studentService.getAllStudents();
     }
+
+    @GetMapping("/noattachments")
+    public List<StudentDto> getAllStudentsNoAttachments(){
+        return studentService.getAllStudentsNoAttachments();
+    }
 }

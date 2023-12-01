@@ -22,4 +22,9 @@ public class StudentServiceImpl implements StudentService{
         return studentRepository.findAll().stream().map(studentMapper.INSTANCE::mapStudentToStudentDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<StudentDto> getAllStudentsNoAttachments() {
+        return studentRepository.findAllNoAttachment();
+    }
 }
